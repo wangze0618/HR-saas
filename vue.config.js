@@ -36,6 +36,15 @@ module.exports = {
       warnings: false,
       errors: true,
     },
+    // 配置反向代理 开发阶段解决跨域问题
+    proxy: {
+      // 当地址里面有/api 的时候就会触发代理机制
+      "/api": {
+        target: "'http://ihrm-java.itheima.net/", // 要代理的服务器地址
+        changeOrigin: true, // 是否跨域
+        pathRewrite: {},
+      },
+    },
     // before: require('./mock/mock-server.js')
   },
   configureWebpack: {
