@@ -20,7 +20,9 @@ const actions = {
   async login(context, data) {
     // 调用api接口
     const result = await loginAPI(data);
-    result.data.success ? context.commit("setToken", result.data.data) : "";
+    if (result) {
+      context.commit("setToken", result);
+    }
   },
 };
 
