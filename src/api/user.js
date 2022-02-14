@@ -9,6 +9,20 @@ export function login(data) {
   });
 }
 
-export function getInfo(token) {}
+// 获取用户资料
+export function getUserInfo() {
+  return request({
+    method: "post",
+    url: "/sys/profile",
+  });
+}
+
+// 根据用户Id获取用户的详情
+export function getUserDetailById(id) {
+  return request({
+    method: "get",
+    url: `/sys/user/${id}`,
+  });
+}
 
 export function logout() {}
