@@ -2,6 +2,7 @@
 import Cookies from "js-cookie";
 
 const state = {
+  title: null,
   sidebar: {
     opened: Cookies.get("sidebarStatus")
       ? !!+Cookies.get("sidebarStatus")
@@ -12,6 +13,9 @@ const state = {
 };
 
 const mutations = {
+  SETTITLE(state, title) {
+    state.title = title;
+  },
   TOGGLE_SIDEBAR: (state) => {
     state.sidebar.opened = !state.sidebar.opened;
     state.sidebar.withoutAnimation = false;
@@ -32,6 +36,9 @@ const mutations = {
 };
 
 const actions = {
+  setTitle(context, data) {
+    context.commit("SETTITLE", data);
+  },
   toggleSideBar({ commit }) {
     commit("TOGGLE_SIDEBAR");
   },
