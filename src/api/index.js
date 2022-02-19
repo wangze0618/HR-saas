@@ -7,7 +7,14 @@ import {
   updateDepartments,
 } from "./departments";
 import { getEmployeeSimple } from "./employees";
-import { getCompanyInfo, getRoles } from "./setting";
+import {
+  addRole,
+  deleteRole,
+  getCompanyInfo,
+  getRoleDetail,
+  getRoles,
+  updateRole,
+} from "./setting";
 
 // 用户登录
 export const loginAPI = login;
@@ -41,3 +48,15 @@ export const getRolesAPI = getRoles;
 
 // 获取公司信息
 export const getCompanyInfoAPI = getCompanyInfo;
+
+// 删除角色
+export const deleteRoleAPI = deleteRole;
+
+//获取角色详情
+export const getRoleDetailAPI = getRoleDetail;
+
+//修改角色
+export const updateRoleAPI = updateRole;
+
+// 新增角色
+export const addRoleAPI = addRole;
