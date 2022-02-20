@@ -6,7 +6,12 @@ import {
   getDepartDetail,
   updateDepartments,
 } from "./departments";
-import { getEmployeeSimple } from "./employees";
+import {
+  addEmployee,
+  delEmployee,
+  getEmployeeList,
+  getEmployeeSimple,
+} from "./employees";
 import {
   addRole,
   deleteRole,
@@ -60,3 +65,12 @@ export const updateRoleAPI = updateRole;
 
 // 新增角色
 export const addRoleAPI = addRole;
+
+// 获取员工的综合列表数据
+export const getEmployeeListAPI = getEmployeeList;
+
+// 删除员工接口
+export const delEmployeeAPI = delEmployee;
+
+// 新增员工接口
+export const addEmployeeAPI = addEmployee;
