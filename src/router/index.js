@@ -53,6 +53,17 @@ import Layout from "@/layout";
  */
 export const constantRoutes = [
   {
+    path: "/import",
+    component: Layout,
+    hidden: true,
+    children: [
+      {
+        path: "",
+        component: () => import("@/views/import/index.vue"),
+      },
+    ],
+  },
+  {
     path: "/login",
     component: () => import("@/views/login/index"),
     hidden: true,

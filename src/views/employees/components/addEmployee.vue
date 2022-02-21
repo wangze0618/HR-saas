@@ -1,9 +1,5 @@
 <template>
-  <el-dialog
-    title="新增员工"
-    :visible="showDialog"
-    :before-close="dialogBeforeClose"
-  >
+  <el-dialog title="新增员工" :visible="showDialog" :before-close="btnCancel()">
     <template>
       <el-form
         ref="mainForm"
@@ -20,6 +16,7 @@
         </el-form-item>
         <el-form-item label="手机" prop="mobile">
           <el-input
+            maxlength="11"
             style="width: 80%"
             v-model="formData.mobile"
             placeholder="请输入手机号"
@@ -81,17 +78,15 @@
     </template>
     <div slot="footer">
       <el-row type="flex" justify="center">
-        <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button @click="btnCancel()">取 消</el-button>
+        <el-button type="primary" @click="btnOk()">确 定</el-button>
       </el-row>
     </div>
   </el-dialog>
 </template>
 
 <script>
-import { getDepartmentsAPI } from "@/api";
+import { addEmployeeAPI, getDepartmentsAPI } from "@/api";
 import { transListToTreeDate } from "@/utils";
 import EmployeeEnum from "@/api/constant/employees";
 
@@ -148,6 +143,26 @@ export default {
     };
   },
   methods: {
+    async btnOk() {
+      await this.$refs.mainForm.validate();
+      await addEmployeeAPI(this.formData);
+      this.$emit("updateList");
+      this.$emit("update:showDialog", false);
+    },
+    btnCancel() {
+      this.formData = {
+        username: "",
+        mobile: "",
+        formOfEmployment: "",
+        workNumber: "",
+        departmentName: "",
+        timeOfEntry: "",
+        correctionTime: "",
+      };
+      this.$refs.mainForm.resetFields();
+      this.$emit("update:showDialog", false);
+    },
+
     selectNode(node) {
       this.formData.departmentName = node.name;
       this.showTree = false;

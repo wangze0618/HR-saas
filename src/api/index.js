@@ -11,6 +11,8 @@ import {
   delEmployee,
   getEmployeeList,
   getEmployeeSimple,
+  importEmployee,
+  saveUserDetailById,
 } from "./employees";
 import {
   addRole,
@@ -74,3 +76,9 @@ export const delEmployeeAPI = delEmployee;
 
 // 新增员工接口
 export const addEmployeeAPI = addEmployee;
+
+// 批量导入员工接口
+export const importEmployeeAPI = importEmployee;
+
+// 保存员工的基本信息
+export const saveUserDetailByIdAPI = saveUserDetailById;

@@ -6,7 +6,9 @@
           <span>共{{ page.total }}条记录</span>
         </template>
         <template #after>
-          <el-button type="warning">Excel导入</el-button>
+          <el-button type="warning" @click="$router.push('/import')"
+            >Excel导入</el-button
+          >
           <el-button type="danger">Excel导出</el-button>
           <el-button type="primary" @click="showDialog = true"
             >新增员工</el-button
@@ -40,7 +42,9 @@
         </el-table-column>
         <el-table-column label="操作" sortable="" fixed="right" width="280">
           <template v-slot="{ row }">
-            <el-button type="text" size="small">查看</el-button>
+            <el-button type="text" size="small" @click="detailInfo(row.id)"
+              >查看</el-button
+            >
             <el-button type="text" size="small">转正</el-button>
             <el-button type="text" size="small">调岗</el-button>
             <el-button type="text" size="small">离职</el-button>
@@ -65,7 +69,10 @@
         </el-col>
       </el-row>
     </div>
-    <addEmployee :showDialog.sync="showDialog"></addEmployee>
+    <addEmployee
+      :showDialog.sync="showDialog"
+      @updateList="getEmployeeList()"
+    ></addEmployee>
   </div>
 </template>
 
@@ -92,6 +99,9 @@ export default {
     this.getEmployeeList();
   },
   methods: {
+    detailInfo(id) {
+      this.$router.push(`/employees/detail/${id}`);
+    },
     currentPage(page) {
       this.page.page = page;
       this.getEmployeeList();

@@ -7,17 +7,20 @@
         <div>111</div>
       </template>
     </PageTools>
+    <UploadExcel></UploadExcel>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import UploadExcel from "@/components/UploadExcel/index.vue";
 
 export default {
   name: "Dashboard",
   computed: {
     ...mapGetters(["name"]),
   },
+  components: { UploadExcel },
 };
 </script>
 

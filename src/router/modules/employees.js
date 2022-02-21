@@ -14,5 +14,13 @@ export default {
         icon: "people",
       },
     },
+    {
+      path: "detail/:id?",
+      hidden: true,
+      component: () => import("@/views/employees/detail.vue"),
+      meta: {
+        title: "员工详情",
+      },
+    },
   ],
 };
