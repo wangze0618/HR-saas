@@ -8,19 +8,23 @@
       </template>
     </PageTools>
     <UploadExcel></UploadExcel>
+    <ImageUpload></ImageUpload>
+    <AssignRole></AssignRole>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import UploadExcel from "@/components/UploadExcel/index.vue";
+import ImageUpload from "@/components/ImageUpload/index.vue";
+import AssignRole from "../employees/components/assignRole.vue";
 
 export default {
   name: "Dashboard",
   computed: {
     ...mapGetters(["name"]),
   },
-  components: { UploadExcel },
+  components: { UploadExcel, ImageUpload, AssignRole },
 };
 </script>
 

@@ -159,7 +159,7 @@ export default {
         timeOfEntry: "",
         correctionTime: "",
       };
-      this.$refs.mainForm.resetFields();
+      // this.$refs.mainForm.resetFields();
       this.$emit("update:showDialog", false);
     },
 

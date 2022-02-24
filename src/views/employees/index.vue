@@ -48,7 +48,9 @@
             <el-button type="text" size="small">转正</el-button>
             <el-button type="text" size="small">调岗</el-button>
             <el-button type="text" size="small">离职</el-button>
-            <el-button type="text" size="small">角色</el-button>
+            <el-button type="text" size="small" @click="editRole(row)"
+              >角色</el-button
+            >
             <el-button type="text" size="small" @click="delEmployee(row)"
               >删除</el-button
             >
@@ -73,6 +75,13 @@
       :showDialog.sync="showDialog"
       @updateList="getEmployeeList()"
     ></addEmployee>
+
+    <!-- 分配角色 -->
+    <AssignRole
+      ref="assignRole"
+      :showDialog.sync="showRoleDialog"
+      :userId="userId"
+    ></AssignRole>
   </div>
 </template>
 
@@ -80,10 +89,13 @@
 import { getEmployeeListAPI, delEmployeeAPI } from "@/api";
 import EmployeeEnum from "@/api/constant/employees";
 import addEmployee from "./components/addEmployee.vue";
+import AssignRole from "./components/assignRole.vue";
 
 export default {
   data() {
     return {
+      userId: "",
+      showRoleDialog: false, // 控制 AssignRole组件 显示
       showDialog: false,
       loading: false,
       list: [],
@@ -99,6 +111,11 @@ export default {
     this.getEmployeeList();
   },
   methods: {
+    async editRole(row) {
+      this.userId = row.id;
+      await this.$refs.assignRole.getUserDetailById(row.id);
+      this.showRoleDialog = true;
+    },
     detailInfo(id) {
       this.$router.push(`/employees/detail/${id}`);
     },
@@ -125,7 +142,7 @@ export default {
       // console.log(row);
     },
   },
-  components: { addEmployee },
+  components: { addEmployee, AssignRole },
 };
 </script>
 

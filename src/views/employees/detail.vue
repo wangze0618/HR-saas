@@ -39,8 +39,12 @@
               </el-row>
             </template>
           </el-tab-pane>
-          <el-tab-pane label="个人详情" name="seconde"></el-tab-pane>
-          <el-tab-pane label="岗位信息" name="third"></el-tab-pane>
+          <el-tab-pane label="个人详情" name="seconde">
+            <component :is="UserComponent"></component>
+          </el-tab-pane>
+          <el-tab-pane label="岗位信息" name="third">
+            <component :is="JobComponent"></component>
+          </el-tab-pane>
         </el-tabs>
       </el-card>
     </div>
@@ -50,9 +54,14 @@
 <script>
 import { getUserDetailByIdAPI } from "@/api";
 import { saveUserDetailById } from "@/api/employees";
+import UserInfo from "./components/userInfo.vue";
+import JobInfo from "./components/jobInfo.vue";
+
 export default {
   data() {
     return {
+      UserComponent: "UserInfo",
+      JobComponent: "jobInfo",
       activeName: "first",
       userId: this.$route.params.id,
       userInfo: {
@@ -111,6 +120,7 @@ export default {
       }
     },
   },
+  components: { UserInfo, JobInfo },
 };
 </script>
 

@@ -8,11 +8,16 @@ import {
 } from "./departments";
 import {
   addEmployee,
+  assignRoles,
   delEmployee,
   getEmployeeList,
   getEmployeeSimple,
+  getJobDetail,
+  getPersonalDetail,
   importEmployee,
   saveUserDetailById,
+  updateJob,
+  updatePersonal,
 } from "./employees";
 import {
   addRole,
@@ -22,6 +27,13 @@ import {
   getRoles,
   updateRole,
 } from "./setting";
+import {
+  addPermission,
+  delPermission,
+  getPermissionDetail,
+  getPermissionList,
+  updatePermission,
+} from "./permission";
 
 // 用户登录
 export const loginAPI = login;
@@ -82,3 +94,33 @@ export const importEmployeeAPI = importEmployee;
 
 // 保存员工的基本信息
 export const saveUserDetailByIdAPI = saveUserDetailById;
+
+// 读取用户详情的基础信息
+export const getPersonalDetailAPI = getPersonalDetail;
+
+// 更新用户详情的基础信息
+export const updatePersonalAPI = updatePersonal;
+
+// 获取用户的岗位信息
+export const getJobDetailAPI = getJobDetail;
+
+// 保存岗位信息
+export const updateJobAPI = updateJob;
+
+// 给用户分配角色
+export const assignRolesAPI = assignRoles;
+
+// 获取权限
+export const getPermissionListAPI = getPermissionList;
+
+// 新增权限
+export const addPermissionAPI = addPermission;
+
+// 更新权限
+export const updatePermissionAPI = updatePermission;
+
+// 删除权限
+export const delPermissionAPI = delPermission;
+
+// 获取权限详情
+export const getPermissionDetailAPI = getPermissionDetail;
